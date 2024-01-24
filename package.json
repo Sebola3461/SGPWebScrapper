@@ -1,0 +1,27 @@
+{
+  "name": "sgpweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./index.ts",
+    "dist": "ncc build -o build/lib  ./build/index.js && pkg --target node16-win-x64 -o ship/sgpweb.exe ./build/lib/index.js"
+  },
+  "author": "Paulo Ricardo Alves Campos",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.11.5",
+    "axios": "^1.6.5",
+    "colors": "^1.4.0",
+    "commander": "^11.1.0",
+    "ini": "^4.1.1",
+    "moment": "^2.30.1",
+    "ncc": "^0.3.6",
+    "pkg": "^5.8.1",
+    "querystring": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/ini": "^4.1.0"
+  }
+}

@@ -1,0 +1,4 @@
+build/
+ship/
+node_modules
+sgpconfig.ini
