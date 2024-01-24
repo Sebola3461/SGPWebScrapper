@@ -62,6 +62,25 @@ export class ARGVManager {
     const dateFields = sanitizedInitialDate.split("/");
 
     if (
+      this.sgp.configuration.period != undefined &&
+      this.sgp.configuration.initialDate != undefined
+    ) {
+      this.logger.printError(
+        "Não é possível utilizar o período e a data inicial juntos!"
+      );
+
+      return this.getToday();
+    }
+
+    if (this.sgp.configuration.period) {
+      const newDate = moment(new Date())
+        .subtract(this.sgp.configuration.period, "days")
+        .format("DD/MM/YYYY");
+
+      return newDate;
+    }
+
+    if (
       dateFields.length != 3 ||
       dateFields
         .map((date) => Number(date))
@@ -102,7 +121,6 @@ export class ARGVManager {
 
       return this.getToday();
     }
-
     return sanitizedEndDate;
   }
 

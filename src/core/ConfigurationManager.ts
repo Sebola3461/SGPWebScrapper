@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync } from "fs";
 import { resolve } from "path";
 import ini from "ini";
 import { SGPFetch } from "./SGPFetch";
+import { LoggerService } from "../utils/LoggerService";
 
 interface ConfigurationFile {
   Geral: {
@@ -11,6 +12,7 @@ interface ConfigurationFile {
     data_final?: string;
     path?: string;
     formato?: string;
+    period?: number;
   };
 }
 
@@ -21,7 +23,9 @@ export class ConfigurationManager {
   public endDate: string | undefined;
   public outputPath: string | undefined;
   public outputFormat: "xls" | "csv" = "xls";
+  public period: number | undefined;
   public sgp: SGPFetch;
+  private logger = new LoggerService("Configuração");
 
   constructor(sgp: SGPFetch) {
     this.sgp = sgp;
@@ -47,10 +51,18 @@ export class ConfigurationManager {
     if (config.Geral.data_inicio) this.initialDate = config.Geral.data_inicio;
     if (config.Geral.data_final) this.endDate = config.Geral.data_final;
     if (config.Geral.path) this.outputPath = config.Geral.path;
-    if (config.Geral.formato) {
-      if (config.Geral.formato == "xls" || config.Geral.formato == "csv") {
-        this.outputFormat = config.Geral.formato;
-      }
+    if (config.Geral.period && !isNaN(config.Geral.period)) {
+      this.logger.printInfo(
+        `Utilizando um período de ${config.Geral.period} dia(s)`
+      );
+
+      this.period = Number(config.Geral.period);
+    }
+    if (
+      config.Geral.formato &&
+      (config.Geral.formato == "xls" || config.Geral.formato == "csv")
+    ) {
+      this.outputFormat = config.Geral.formato;
     }
   }
 }

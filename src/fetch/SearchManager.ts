@@ -6,7 +6,6 @@ import { SGPWeb } from "../../types/SGPWeb";
 import { writeFileSync } from "fs";
 import { ExportSearchCSVBody } from "../constants/fetch/ExportSearchCSVBody";
 import { ExportSearchXLSBody } from "../constants/fetch/ExportSearchXLSBody";
-import moment from "moment";
 
 interface SearchObject {
   data_inicio: string;
