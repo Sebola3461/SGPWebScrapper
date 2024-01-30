@@ -22,7 +22,7 @@ export class ConfigurationManager {
   public initialDate: string | undefined;
   public endDate: string | undefined;
   public outputPath: string | undefined;
-  public outputFormat: "xls" | "csv" = "xls";
+  public outputFormat: "xlsx" | "csv" = "xlsx";
   public period: number | undefined;
   public sgp: SGPFetch;
   private logger = new LoggerService("Configuração");
@@ -60,7 +60,7 @@ export class ConfigurationManager {
     }
     if (
       config.Geral.formato &&
-      (config.Geral.formato == "xls" || config.Geral.formato == "csv")
+      (config.Geral.formato == "xlsx" || config.Geral.formato == "csv")
     ) {
       this.outputFormat = config.Geral.formato;
     }

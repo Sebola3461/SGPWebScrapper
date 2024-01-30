@@ -11,10 +11,13 @@
   "author": "Paulo Ricardo Alves Campos",
   "license": "ISC",
   "dependencies": {
+    "@aternus/csv-to-xlsx": "^2.1.2",
     "@types/node": "^20.11.5",
+    "@vercel/ncc": "^0.38.1",
     "axios": "^1.6.5",
     "colors": "^1.4.0",
     "commander": "^11.1.0",
+    "dumb-csv": "^1.1.2",
     "ini": "^4.1.1",
     "moment": "^2.30.1",
     "ncc": "^0.3.6",

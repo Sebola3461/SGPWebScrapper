@@ -3,9 +3,9 @@ import { SGPFetch } from "../core/SGPFetch";
 import { LoggerService } from "../utils/LoggerService";
 import querystring from "querystring";
 import { SGPWeb } from "../../types/SGPWeb";
-import { writeFileSync } from "fs";
+import { rmSync, writeFileSync } from "fs";
 import { ExportSearchCSVBody } from "../constants/fetch/ExportSearchCSVBody";
-import { ExportSearchXLSBody } from "../constants/fetch/ExportSearchXLSBody";
+import { csvToXlsx } from "../xlsx/csvToXLSX";
 
 interface SearchObject {
   data_inicio: string;
@@ -50,15 +50,14 @@ export class SearchManager {
           "content-type":
             "multipart/form-data; boundary=----WebKitFormBoundaryrMoiJJWTR9888ZRM",
           accept:
-            "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7; charset=utf-8",
           cookie: `PHPSESSID=${this.sgp.credentials.sessionId}; key=value`,
         },
-        data: (type == SGPWeb.SearchExportType.CSV
-          ? ExportSearchCSVBody
-          : ExportSearchXLSBody
-        )
-          .replace("{{data_inicio}}", this.sgp.parameters.getInitialDate())
-          .replace("{{data_fim}}", this.sgp.parameters.getEndDate()),
+        data: ExportSearchCSVBody.replace(
+          "{{data_inicio}}",
+          this.sgp.parameters.getInitialDate()
+        ).replace("{{data_fim}}", this.sgp.parameters.getEndDate()),
+        responseType: "arraybuffer",
         method: "POST",
       }).then((response) => {
         if (response.status != 200) {
@@ -74,9 +73,15 @@ export class SearchManager {
 
         this.logger.printSuccess("Pesquisa exportada!");
 
-        writeFileSync(path, response.data);
+        const content = (response.data as Buffer).toString("latin1");
 
-        resolve(response.data);
+        if (type == SGPWeb.SearchExportType.XLSX) {
+          csvToXlsx(content, path, { overwrite: true });
+        } else {
+          writeFileSync(path, content);
+        }
+
+        resolve(content);
       });
     });
   }

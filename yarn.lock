@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@aternus/csv-to-xlsx@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@aternus/csv-to-xlsx/-/csv-to-xlsx-2.1.2.tgz#e3e6d207d0d5d7d643f6bc4b8b50d9696e2d19ac"
+  integrity sha512-WgS8QBPEk2jvPvciTab3sIYcQfXDTQ70O9RjzTmNKxBtWwd8RJMlJNDGAnfYOzcS83q3DQm5axM4FTqsfYu5jA==
+  dependencies:
+    commander "^11.0.0"
+    csv-parse "^5.0.4"
+    fs-extra "^11.1.1"
+    xlsx "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
+
 "@babel/generator@7.18.2":
   version "7.18.2"
   resolved "https://registry.npmjs.org/@babel/generator/-/generator-7.18.2.tgz"
@@ -99,6 +109,11 @@
   integrity sha512-g557vgQjUUfN76MZAN/dt1z3dzcUsimuysco0KeluHgrPdJXkP/XdAURgyO2W9fZWHRtRBiVKzKn8vyOAwlG+w==
   dependencies:
     undici-types "~5.26.4"
+
+"@vercel/ncc@^0.38.1":
+  version "0.38.1"
+  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.38.1.tgz#13f08738111e1d9e8a22fd6141f3590e54d9a60e"
+  integrity sha512-IBBb+iI2NLu4VQn3Vwldyi2QwaXt5+hTyh58ggAMoCGE6DJmPvwL3KPBWcJl1m9LYPChBLE980Jw+CS4Wokqxw==
 
 agent-base@6:
   version "6.0.2"
@@ -236,7 +251,7 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^11.1.0:
+commander@^11.0.0, commander@^11.1.0:
   version "11.1.0"
   resolved "https://registry.npmjs.org/commander/-/commander-11.1.0.tgz"
   integrity sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==
@@ -250,6 +265,11 @@ core-util-is@~1.0.0:
   version "1.0.3"
   resolved "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz"
   integrity sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
+
+csv-parse@^5.0.4:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-5.5.3.tgz#0261050761ee46cd0e46421854bf9bf4de1317bf"
+  integrity sha512-v0KW6C0qlZzoGjk6u5tLmVfyZxNgPGXZsWTXshpAgKVGmGXzaVWGdlCFxNx5iuzcXT/oJN1HHM9DZKwtAtYa+A==
 
 dateformat@3.0.3:
   version "3.0.3"
@@ -291,6 +311,11 @@ dir-glob@^3.0.1:
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
+
+dumb-csv@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/dumb-csv/-/dumb-csv-1.1.2.tgz#54be92b2ee21a4d6b653585d337d301bf14f0d56"
+  integrity sha512-hvNIbY8YOlSgC4kSWKltbuxfuit5r/61Y4da8qhoLvqdc1drg44aSiFPMTD1y2cgJ21izTvnLWEXwHpFGZ/6wg==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -365,6 +390,15 @@ fs-constants@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs-constants/-/fs-constants-1.0.0.tgz"
   integrity sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==
+
+fs-extra@^11.1.1:
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.2.0.tgz#e70e17dfad64232287d01929399e0ea7c86b0e5b"
+  integrity sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
 
 fs-extra@^9.1.0:
   version "9.1.0"
@@ -639,7 +673,7 @@ napi-build-utils@^1.0.1:
 
 ncc@^0.3.6:
   version "0.3.6"
-  resolved "https://registry.npmjs.org/ncc/-/ncc-0.3.6.tgz"
+  resolved "https://registry.yarnpkg.com/ncc/-/ncc-0.3.6.tgz#11b47af973d7f2374af46bc0d8533366acc908eb"
   integrity sha512-OXudTB2Ebt/FnOuDoPQbaa17+tdVqSOWA+gLfPxccWwsNED1uA2zEhpoB1hwdFC9yYbio/mdV5cvOtQI3Zrx1w==
   dependencies:
     mkdirp "^0.5.1"
@@ -1040,6 +1074,10 @@ ws@^2.3.1:
   dependencies:
     safe-buffer "~5.0.1"
     ultron "~1.1.0"
+
+"xlsx@https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz":
+  version "0.20.0"
+  resolved "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz#ca1826e53a4fe32f8789ae6c584457e7bf10841e"
 
 y18n@^5.0.5:
   version "5.0.8"

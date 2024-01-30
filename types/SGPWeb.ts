@@ -14,7 +14,7 @@ export namespace SGPWeb {
     extends APIResponseBody<Postagem[]> {}
 
   export enum SearchExportType {
-    XLS = "xls",
+    XLSX = "xlsx",
     CSV = "csv",
   }
 

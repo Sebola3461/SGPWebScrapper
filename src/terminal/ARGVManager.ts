@@ -32,8 +32,8 @@ export class ARGVManager {
 
     const sanitizedFormat = String(input).trim().toLowerCase();
 
-    if (!["xls", "csv"].includes(sanitizedFormat))
-      return "xls" as SGPWeb.SearchExportType;
+    if (!["xlsx", "csv"].includes(sanitizedFormat))
+      return "xlsx" as SGPWeb.SearchExportType;
 
     return sanitizedFormat as SGPWeb.SearchExportType;
   }
